@@ -2,6 +2,11 @@
 
 A new Flutter project.
 
+
+# Video Walkthrough
+[App Preview.webm](https://github.com/AD17YAKR/PaperFlow_UI/assets/71925269/6d3f2666-25be-4f99-909c-863f9ecbd352)
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
