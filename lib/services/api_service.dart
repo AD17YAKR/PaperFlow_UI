@@ -11,7 +11,7 @@ class ApiService {
     'Content-Type': 'application/json; charset=UTF-8',
   };
 
-  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   Future<dynamic> uploadPdf() async {
     String endPoint = '/pdf/upload';

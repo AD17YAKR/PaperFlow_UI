@@ -3,21 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paperflow_ui/bindings/initial_bindings.dart';
+import 'package:paperflow_ui/routes/app_pages.dart';
+import 'package:paperflow_ui/routes/app_routes.dart';
 import 'package:paperflow_ui/utils/colors.dart';
-import 'package:paperflow_ui/views/login_page.dart';
-import 'package:paperflow_ui/views/splash_screen.dart';
+import 'package:paperflow_ui/modules/auth/view/login.view.dart';
+import 'package:paperflow_ui/modules/splash_screen.dart';
 
 void main() {
-  final runnableApp = _buildRunnableApp(
+/*   final runnableApp = _buildRunnableApp(
     isWeb: kIsWeb,
     webAppWidth: 600.0,
     app: const MyApp(),
   );
-
-  runApp(runnableApp);
+ */
+  // runApp(runnableApp);
+  runApp(const MyApp());
 }
 
-Widget _buildRunnableApp({
+/* Widget _buildRunnableApp({
   required bool isWeb,
   required double webAppWidth,
   required Widget app,
@@ -35,7 +38,7 @@ Widget _buildRunnableApp({
     ),
   );
 }
-
+ */
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -93,14 +96,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      initialRoute: '/',
+      initialRoute: Routes.LOGIN_SCREEN,
       initialBinding: InitialBinding(),
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => kIsWeb ? LoginPage() : SplashScreen(),
-        )
-      ],
+      getPages: AppPages.routes,
     );
   }
 }

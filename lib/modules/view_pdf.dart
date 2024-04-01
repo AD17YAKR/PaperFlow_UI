@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:paperflow_ui/utils/colors.dart';
-import 'package:paperflow_ui/views/comment_page.dart';
+import 'package:paperflow_ui/modules/comment_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:http/http.dart' as http;

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:paperflow_ui/views/home_page.dart';
-import 'package:paperflow_ui/views/login_page.dart';
+import 'package:paperflow_ui/modules/home_page.dart';
+import 'package:paperflow_ui/modules/auth/view/login.view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (data != null) {
       Get.off(const HomePage());
     } else {
-      Get.off(LoginPage());
+      Get.off(const LoginView());
     }
   }
 

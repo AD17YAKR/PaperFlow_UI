@@ -1,39 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paperflow_ui/services/api_service.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:paperflow_ui/modules/auth/controller/login.controller.dart';
+import 'package:paperflow_ui/routes/app_routes.dart';
 import 'package:paperflow_ui/utils/colors.dart';
-import 'package:paperflow_ui/views/home_page.dart';
-import 'package:paperflow_ui/views/register_page.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final ApiService apiService = ApiService();
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
-
-  bool passwordVisible = false;
-
-  Future<void> loginUser() async {
-    try {
-      final results = await apiService.loginUser(
-          usernameController.text, passwordController.text);
-      if (results.statusCode == 201 || results.statusCode == 200) {
-        Get.offAll(() => const HomePage());
-        // Get.snackbar('Success', 'Login Successful');
-      } else {
-        Get.snackbar('Error', 'Invalid credentials');
-      }
-    } catch (e) {
-      Get.snackbar('Error', 'Login failed');
-    }
-  }
+class LoginView extends GetView<LoginController> {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10.0,
                 ),
                 TextField(
-                  controller: usernameController,
+                  controller: controller.usernameController,
                   decoration: InputDecoration(
                     labelText: 'Username',
                     labelStyle: GoogleFonts.montserrat(),
@@ -75,32 +48,34 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 16.0),
-                TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: GoogleFonts.montserrat(),
-                    border: const OutlineInputBorder(),
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          passwordVisible = !passwordVisible;
-                        });
-                      },
-                      child: Icon(
-                        passwordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                Obx(() {
+                  return TextField(
+                    controller: controller.passwordController,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      labelStyle: GoogleFonts.montserrat(),
+                      border: const OutlineInputBorder(),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          controller.togglePassword();
+                        },
+                        child: Icon(
+                          controller.passwordVisible.value
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
                       ),
                     ),
-                  ),
-                  obscureText: passwordVisible,
+                    obscureText: controller.passwordVisible.value,
+                  );
+                }),
+                const SizedBox(
+                  height: 32.0,
                 ),
-                const SizedBox(height: 32.0),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => loginUser(),
+                    onPressed: () => controller.loginUser(),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(9.0),
                       backgroundColor: AppColors.buttonPrimary,
@@ -118,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(const RegisterPage());
+                Get.toNamed(Routes.REGISTER_SCREEN);
               },
               child: const Text.rich(
                 TextSpan(

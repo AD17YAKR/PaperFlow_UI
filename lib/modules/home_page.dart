@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:paperflow_ui/modules/auth/view/login.view.dart';
 import 'package:paperflow_ui/services/api_service.dart';
 import 'package:paperflow_ui/utils/colors.dart';
-import 'package:paperflow_ui/views/login_page.dart';
-import 'package:paperflow_ui/views/view_pdf.dart';
+import 'package:paperflow_ui/modules/view_pdf.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               await _secureStorage.deleteAll();
-              Get.to(LoginPage());
+              Get.to(LoginView());
             },
           ),
         ],
