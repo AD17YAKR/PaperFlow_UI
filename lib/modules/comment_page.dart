@@ -4,13 +4,12 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:paperflow_ui/services/api_service.dart';
-import 'package:paperflow_ui/utils/colors.dart';
+import '../services/api_service.dart';
+import '../utils/colors.dart';
 
 class CommentPage extends StatefulWidget {
-  var id;
-
-  CommentPage({super.key, required this.id});
+  final id;
+  const CommentPage({super.key, required this.id});
 
   @override
   _CommentPageState createState() => _CommentPageState();
@@ -20,9 +19,9 @@ class _CommentPageState extends State<CommentPage> {
   String? accessToken, email, username;
   var data, sharedPdfs;
   ApiService apiService = ApiService();
-  FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
   bool _isLoading = true;
-  TextEditingController _commentController = TextEditingController();
+  final TextEditingController _commentController = TextEditingController();
   Future<Map<String, dynamic>> fetchData() async {
     accessToken = await _secureStorage.read(key: 'access_token');
     email = await _secureStorage.read(key: 'email');
@@ -38,13 +37,12 @@ class _CommentPageState extends State<CommentPage> {
   }
 
   var result;
-  getData() async {
+  void getData() async {
     result = await fetchData();
     result = result['comments'];
     setState(() {
       _isLoading = false;
     });
-    ;
   }
 
   @override
@@ -54,9 +52,9 @@ class _CommentPageState extends State<CommentPage> {
   }
 
   String changeIsoStringToData(String isoString) {
-    DateTime dateTime = DateTime.parse(isoString);
+    final dateTime = DateTime.parse(isoString);
 
-    String formattedDate = DateFormat('dd-MMMM-yyyy').format(dateTime);
+    final formattedDate = DateFormat('dd-MMMM-yyyy').format(dateTime);
     return formattedDate;
   }
 
@@ -79,7 +77,7 @@ class _CommentPageState extends State<CommentPage> {
               child: SizedBox(
                 height: 300,
                 width: 300,
-                child: Lottie.asset("assets/loading.json"),
+                child: Lottie.asset('assets/loading.json'),
               ),
             )
           : Padding(

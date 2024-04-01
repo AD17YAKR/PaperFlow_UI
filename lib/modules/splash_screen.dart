@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:paperflow_ui/modules/home_page.dart';
-import 'package:paperflow_ui/modules/auth/view/login.view.dart';
+import 'home_page.dart';
+import 'auth/view/login.view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,8 +15,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<String?> isLoggedIn() async {
-    const FlutterSecureStorage _secureStorage = FlutterSecureStorage();
-    String? accessToken = await _secureStorage.read(key: 'access_token');
+    const secureStorage = FlutterSecureStorage();
+    final accessToken = await secureStorage.read(key: 'access_token');
     return accessToken;
   }
 
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigateToNextScreen() async {
-    String? data = await isLoggedIn();
+    final data = await isLoggedIn();
     await Future.delayed(const Duration(milliseconds: 2000));
     if (data != null) {
       Get.off(const HomePage());

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:paperflow_ui/services/api_service.dart';
+import '../services/api_service.dart';
 
 class AddNewUser extends StatefulWidget {
   final pdfId;
@@ -28,13 +28,8 @@ class _AddNewUserState extends State<AddNewUser> {
     res = await apiService.addNewUser(userId, pdfId);
   }
 
-  getData() async {
-    var res = await fetchData();
-  }
-
   @override
   void initState() {
-    getData();
     super.initState();
   }
 
@@ -42,19 +37,19 @@ class _AddNewUserState extends State<AddNewUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add New User"),
+        title: const Text('Add New User'),
       ),
       body: _isLoading
           ? Center(
               child: SizedBox(
                 height: 300,
                 width: 300,
-                child: Lottie.asset("assets/loading.json"),
+                child: Lottie.asset('assets/loading.json'),
               ),
             )
           : data.length == 0
-              ? Center(
-                  child: Text("No users Found"),
+              ? const Center(
+                  child: Text('No users Found'),
                 )
               : ListView(
                   children: [

@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:paperflow_ui/utils/colors.dart';
-import 'package:paperflow_ui/modules/comment_page.dart';
+import '../utils/colors.dart';
+import 'comment_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:http/http.dart' as http;
@@ -13,9 +13,8 @@ import 'package:http/http.dart' as http;
 import 'add_new_user.dart';
 
 class PdfViewPage extends StatefulWidget {
-  var data;
-
-  PdfViewPage({super.key, required this.data});
+  final data;
+  const PdfViewPage({super.key, required this.data});
 
   @override
   _PdfViewPageState createState() => _PdfViewPageState();
@@ -84,7 +83,7 @@ class _PdfViewPageState extends State<PdfViewPage> {
               child: SizedBox(
                 height: 300,
                 width: 300,
-                child: Lottie.asset("assets/loading.json"),
+                child: Lottie.asset('assets/loading.json'),
               ),
             ),
       floatingActionButton: Column(
@@ -101,11 +100,11 @@ class _PdfViewPageState extends State<PdfViewPage> {
               Icons.message,
             ),
           ),
-          SizedBox(height: 16), // Add some spacing between the buttons
+          const SizedBox(height: 16), // Add some spacing between the buttons
           FloatingActionButton(
             backgroundColor: AppColors.primary,
             onPressed: () {
-              Get.to(AddNewUser(pdfId: widget.data["_id"]));
+              Get.to(AddNewUser(pdfId: widget.data['_id']));
             },
             child: const Icon(
               Icons.person_add,

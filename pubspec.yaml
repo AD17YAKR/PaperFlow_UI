@@ -23,6 +23,8 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^22.1.37
   file_picker: ^5.3.2
 
+  intl: any
+  path_provider: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

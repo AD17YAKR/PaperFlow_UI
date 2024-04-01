@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paperflow_ui/modules/auth/controller/login.controller.dart';
-import 'package:paperflow_ui/routes/app_routes.dart';
-import 'package:paperflow_ui/utils/colors.dart';
+import '../controller/login.controller.dart';
+import '../../../routes/app_routes.dart';
+import '../../../utils/colors.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
@@ -26,7 +26,7 @@ class LoginView extends GetView<LoginController> {
                 ),
                 const SizedBox(height: 2.5),
                 Text(
-                  "PaperFlow",
+                  'PaperFlow',
                   style: GoogleFonts.dancingScript(
                     fontSize: 40.0,
                     fontWeight: FontWeight.w500,
@@ -100,7 +100,7 @@ class LoginView extends GetView<LoginController> {
                   text: "Don't Have an Account ? ",
                   children: [
                     TextSpan(
-                      text: "Register",
+                      text: 'Register',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                       ),

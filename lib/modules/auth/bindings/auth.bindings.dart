@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:paperflow_ui/modules/auth/controller/login.controller.dart';
-import 'package:paperflow_ui/modules/auth/controller/register.controller.dart';
+import '../controller/login.controller.dart';
+import '../controller/register.controller.dart';
 
 class LoginBindings extends Bindings {
   @override

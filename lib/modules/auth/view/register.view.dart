@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paperflow_ui/modules/auth/controller/register.controller.dart';
-import 'package:paperflow_ui/utils/colors.dart';
+import '../controller/register.controller.dart';
+import '../../../utils/colors.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({super.key});
@@ -61,11 +61,11 @@ class RegisterView extends GetView<RegisterController> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    bool emailValid = RegExp(
+                    final emailValid = RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+.[a-zA-Z]+")
                         .hasMatch(controller.emailController.text);
                     if (!emailValid) {
-                      Get.snackbar("Error", "Enter a valid email");
+                      Get.snackbar('Error', 'Enter a valid email');
                     } else {
                       controller.registerUser();
                     }

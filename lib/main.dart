@@ -1,53 +1,21 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paperflow_ui/bindings/initial_bindings.dart';
-import 'package:paperflow_ui/routes/app_pages.dart';
-import 'package:paperflow_ui/routes/app_routes.dart';
-import 'package:paperflow_ui/utils/colors.dart';
-import 'package:paperflow_ui/modules/auth/view/login.view.dart';
-import 'package:paperflow_ui/modules/splash_screen.dart';
+import 'bindings/initial_bindings.dart';
+import 'routes/app_pages.dart';
+import 'routes/app_routes.dart';
+import 'utils/colors.dart';
 
 void main() {
-/*   final runnableApp = _buildRunnableApp(
-    isWeb: kIsWeb,
-    webAppWidth: 600.0,
-    app: const MyApp(),
-  );
- */
   // runApp(runnableApp);
   runApp(const MyApp());
 }
 
-/* Widget _buildRunnableApp({
-  required bool isWeb,
-  required double webAppWidth,
-  required Widget app,
-}) {
-  if (!isWeb) {
-    return app;
-  }
-
-  return Center(
-    child: ClipRect(
-      child: SizedBox(
-        width: webAppWidth,
-        child: app,
-      ),
-    ),
-  );
-}
- */
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Create a GetXController for managing the theme
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Paperflow UI',

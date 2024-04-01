@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:paperflow_ui/modules/auth/bindings/auth.bindings.dart';
-import 'package:paperflow_ui/modules/auth/view/login.view.dart';
-import 'package:paperflow_ui/modules/auth/view/register.view.dart';
-import 'package:paperflow_ui/routes/app_routes.dart';
+import '../modules/auth/bindings/auth.bindings.dart';
+import '../modules/auth/view/login.view.dart';
+import '../modules/auth/view/register.view.dart';
+import 'app_routes.dart';
 
 class AppPages {
   static final routes = [
